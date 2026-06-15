@@ -1,5 +1,6 @@
 ## Hi there 👋
 
+Data Analyst specializing in SQL, Tableau, Power BI, Excel, and R. Experienced in workforce analytics, KPI reporting, forecasting, and dashboard development. Passionate about transforming complex data into actionable business insights that drive strategic decision-making.
 <!--
 **hanni-zaher/hanni-zaher** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
