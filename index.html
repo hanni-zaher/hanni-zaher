@@ -488,9 +488,21 @@
   <h2 class="section-title">Key Projects</h2>
   <div class="projects-grid">
 
-    <!-- Video Game Sales — FEATURED -->
-    <div class="project-card featured" onclick="openProject('videogame')" role="button" tabindex="0" aria-label="Open Video Game Sales Dashboard project">
+    <!-- LOB Analysis — FEATURED -->
+    <div class="project-card featured" onclick="openProject('lob')" role="button" tabindex="0" aria-label="Open Line of Business Analysis Dashboard project">
       <span class="featured-badge">⭐ Featured Project</span>
+      <div class="featured-content">
+        <p class="project-tag">Power BI · Workforce Analytics</p>
+        <h3 class="project-title">Line of Business Analysis Dashboard</h3>
+        <p class="project-desc">A multi-page operational dashboard that brings interval-level ASA, best and worst day KPIs, peak interval performance, staffing averages, and client-level detail into one decision-ready view.</p>
+        <ul class="tools-list" style="margin-top:.5rem;"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Snowflake SQL</li></ul>
+        <span class="card-cta">View Full Project →</span>
+      </div>
+      <div class="featured-visual"><img src="lob-analysis-dashboard.png" alt="Line of Business Analysis dashboard showing ASA KPIs, heatmap, staffing averages and client detail" style="width:100%;height:100%;object-fit:cover;border-radius:5px;"></div>
+    </div>
+
+    <!-- Video Game Sales -->
+    <div class="project-card featured" onclick="openProject('videogame')" role="button" tabindex="0" aria-label="Open Video Game Sales Dashboard project">
       <div class="featured-content">
         <p class="project-tag">Tableau · Interactive Dashboard</p>
         <h3 class="project-title">Video Game Sales Dashboard</h3>
@@ -616,6 +628,39 @@
 
 <script>
   const projects = {
+    lob: {
+      tag: 'Power BI · Workforce Analytics',
+      title: 'Line of Business Analysis Dashboard',
+      summary: 'A multi-page operational reporting solution that turns interval-level contact center data into clear performance, staffing, and client-level insights for Workforce Management decision-making.',
+      objective: 'Create a repeatable line-of-business view that helps analysts and leaders identify when ASA performance changed, where service pressure occurred, and which staffing or client segments require deeper investigation.',
+      process: [
+        'Defined the KPI framework for average ASA, best day, worst day, and peak interval performance.',
+        'Connected and standardized operational call data, intraday workforce data, schedule data, and performance-guarantee reference data.',
+        'Built weighted ASA measures so aggregate results reflect answered-call volume rather than averages of averages.',
+        'Developed filter-aware DAX for daily and interval KPIs, then validated card results against the heatmap and detailed tables.',
+        'Replicated the report structure across multiple lines of business for consistent performance review.'
+      ],
+      features: [
+        'Four headline KPI cards for average ASA, worst day, peak interval, and best day',
+        '30-minute weekday ASA heatmap with conditional formatting',
+        'Staffing averages for openers, early/mid roles, mid roles, and closers',
+        'Expandable client and performance-guarantee detail',
+        'Dedicated report pages for multiple lines of business'
+      ],
+      findings: [
+        'The dashboard makes interval-level exception periods visible without requiring manual spreadsheet comparisons.',
+        'Weighted KPI logic keeps executive cards aligned with underlying answered-call volume.',
+        'Placing staffing and performance on the same page supports faster root-cause analysis and coverage discussions.'
+      ],
+      takeaway: 'This project demonstrates end-to-end business intelligence delivery: requirements gathering, source validation, data modeling, DAX development, visual design, testing, and operational storytelling.',
+      images: [
+        { src: 'lob-analysis-dashboard.png', caption: 'LOB Analysis Dashboard — KPI cards, ASA heatmap, staffing averages, and client-level performance detail' }
+      ],
+      tools: ['Microsoft Power BI', 'DAX', 'Power Query', 'Snowflake SQL', 'Microsoft Excel', 'Data Modeling', 'Conditional Formatting', 'Workforce Management KPIs'],
+      link: 'lob-analysis-project.html',
+      linkLabel: 'View Dedicated Case Study →',
+      hasCode: false
+    },
     videogame: {
       tag: 'Tableau · Interactive Dashboard',
       title: 'Video Game Sales Dashboard',
