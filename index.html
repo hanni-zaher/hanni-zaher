@@ -490,7 +490,6 @@
 
     <!-- LOB Analysis — FEATURED -->
     <div class="project-card featured" onclick="openProject('lob')" role="button" tabindex="0" aria-label="Open Line of Business Analysis Dashboard project">
-      <span class="featured-badge">⭐ Featured Project</span>
       <div class="featured-content">
         <p class="project-tag">Power BI · Workforce Analytics</p>
         <h3 class="project-title">Line of Business Analysis Dashboard</h3>
@@ -502,7 +501,8 @@
     </div>
 
     <!-- Video Game Sales -->
-    <div class="project-card featured" onclick="openProject('videogame')" role="button" tabindex="0" aria-label="Open Video Game Sales Dashboard project">
+    <div class="project-card" onclick="openProject('videogame')" role="button" tabindex="0" aria-label="Open Video Game Sales Dashboard project">
+      <span class="featured-badge">⭐ Featured Project</span>
       <div class="featured-content">
         <p class="project-tag">Tableau · Interactive Dashboard</p>
         <h3 class="project-title">Video Game Sales Dashboard</h3>
@@ -633,13 +633,7 @@
       title: 'Line of Business Analysis Dashboard',
       summary: 'A multi-page operational reporting solution that turns interval-level contact center data into clear performance, staffing, and client-level insights for Workforce Management decision-making.',
       objective: 'Create a repeatable line-of-business view that helps analysts and leaders identify when ASA performance changed, where service pressure occurred, and which staffing or client segments require deeper investigation.',
-      process: [
-        'Defined the KPI framework for average ASA, best day, worst day, and peak interval performance.',
-        'Connected and standardized operational call data, intraday workforce data, schedule data, and performance-guarantee reference data.',
-        'Built weighted ASA measures so aggregate results reflect answered-call volume rather than averages of averages.',
-        'Developed filter-aware DAX for daily and interval KPIs, then validated card results against the heatmap and detailed tables.',
-        'Replicated the report structure across multiple lines of business for consistent performance review.'
-      ],
+      process: 'Defined the KPI framework for average ASA, best day, worst day, and peak interval performance. Connected and standardized operational call data, intraday workforce data, schedule data, and performance-guarantee reference data. Built weighted ASA measures, developed filter-aware DAX, and validated card results against heatmap and detailed-table values.',
       features: [
         'Four headline KPI cards for average ASA, worst day, peak interval, and best day',
         '30-minute weekday ASA heatmap with conditional formatting',
@@ -647,12 +641,12 @@
         'Expandable client and performance-guarantee detail',
         'Dedicated report pages for multiple lines of business'
       ],
-      findings: [
-        'The dashboard makes interval-level exception periods visible without requiring manual spreadsheet comparisons.',
-        'Weighted KPI logic keeps executive cards aligned with underlying answered-call volume.',
-        'Placing staffing and performance on the same page supports faster root-cause analysis and coverage discussions.'
+      insights: [
+        'Interval-level exception periods are visible without requiring manual spreadsheet comparisons',
+        'Weighted KPI logic keeps executive cards aligned with underlying answered-call volume',
+        'Staffing and performance on the same page support faster root-cause analysis and coverage discussions',
+        'A repeatable page structure creates consistent reporting across lines of business'
       ],
-      takeaway: 'This project demonstrates end-to-end business intelligence delivery: requirements gathering, source validation, data modeling, DAX development, visual design, testing, and operational storytelling.',
       images: [
         { src: 'lob-analysis-dashboard.png', caption: 'LOB Analysis Dashboard — KPI cards, ASA heatmap, staffing averages, and client-level performance detail' }
       ],
