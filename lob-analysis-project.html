@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LOB Analysis Dashboard case study by Hanni Zaher, featuring Power BI, DAX, Power Query, KPI analysis, ASA heatmaps, staffing views, and operational reporting.">
+  <title>LOB Analysis Dashboard | Hanni Zaher</title>
+  <style>
+    :root{--navy:#0d1b2a;--blue:#1f4e79;--cyan:#43b5d9;--ink:#17202a;--muted:#5c6773;--paper:#fff;--soft:#f4f7fa;--line:#dce4eb;--accent:#7c0046;--shadow:0 18px 50px rgba(13,27,42,.12)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Aptos,Calibri,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+    a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .skip{position:absolute;left:-999px;top:0}.skip:focus{left:16px;top:16px;background:#fff;padding:10px;z-index:99}
+    header{position:sticky;top:0;z-index:20;background:rgba(13,27,42,.95);backdrop-filter:blur(10px);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+    nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{text-decoration:none;font-weight:800;letter-spacing:.02em}.navlinks{display:flex;gap:22px;align-items:center}.navlinks a{text-decoration:none;color:#dfe9f2;font-size:.95rem}.navlinks a:hover,.navlinks a:focus{color:#fff}
+    .hero{background:linear-gradient(135deg,var(--navy),#183a59 70%,var(--blue));color:#fff;padding:88px 0 72px;overflow:hidden}.eyebrow{display:inline-block;color:#a8e1f2;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:800;margin-bottom:14px}.hero h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;margin:0 0 22px;max-width:900px}.hero p{font-size:clamp(1.05rem,2vw,1.3rem);max-width:770px;color:#d9e6ef;margin:0 0 32px}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);padding:7px 12px;border-radius:999px;font-size:.87rem}
+    section{padding:76px 0}.soft{background:var(--soft)}.section-kicker{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.76rem}.section-title{font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;margin:8px 0 18px}.lead{font-size:1.12rem;color:var(--muted);max-width:790px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 8px 24px rgba(13,27,42,.05)}.card h3{margin:0 0 10px;font-size:1.15rem}.card p{margin:0;color:var(--muted)}
+    .metric{grid-column:span 3}.metric strong{display:block;font-size:2rem;color:var(--blue);line-height:1.1;margin-bottom:6px}.metric span{color:var(--muted);font-size:.92rem}
+    figure{margin:34px 0 0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}figure img{display:block;width:100%;height:auto}figcaption{padding:16px 20px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+    .two{grid-column:span 6}.three{grid-column:span 4}.list{margin:10px 0 0;padding-left:20px}.list li{margin:8px 0}.flow{counter-reset:step}.step{grid-column:span 3;position:relative}.step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;margin-bottom:14px}
+    .tech{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.tech span{background:#e9f1f7;color:#173c5c;border:1px solid #cfdeea;padding:9px 14px;border-radius:10px;font-weight:700}
+    .callout{border-left:5px solid var(--accent);background:#fff;padding:26px 30px;border-radius:0 16px 16px 0;box-shadow:var(--shadow)}.callout p{font-size:1.2rem;margin:0;color:#2c3640}
+    footer{padding:38px 0;background:var(--navy);color:#d6e2eb}.footer-row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer-row a{color:#fff}
+    @media(max-width:800px){.navlinks a:not(:last-child){display:none}.metric,.step,.three,.two{grid-column:span 12}.hero{padding:70px 0 58px}section{padding:58px 0}.wrap{width:min(100% - 28px,1120px)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header><div class="wrap"><nav aria-label="Primary navigation"><a class="brand" href="index.html">HANNI ZAHER</a><div class="navlinks"><a href="#overview">Overview</a><a href="#solution">Solution</a><a href="#tools">Tools</a><a href="index.html#projects">All Projects</a></div></nav></div></header>
+<main id="main">
+  <section class="hero"><div class="wrap"><span class="eyebrow">Power BI case study • Workforce analytics</span><h1>Line of Business Analysis Dashboard</h1><p>A multi-page operational reporting solution that turns interval-level contact center data into clear performance, staffing, and client-level insights for Workforce Management decision-making.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Snowflake SQL</span><span class="chip">Workforce Management</span></div></div></section>
+
+  <section id="overview"><div class="wrap"><span class="section-kicker">Project overview</span><h2 class="section-title">From fragmented performance data to one decision-ready view</h2><p class="lead">The LOB Analysis Dashboard was created to make line-of-business performance easier to evaluate across days, 30-minute intervals, staffing roles, performance guarantees, and client groups. The design prioritizes fast exception identification while preserving the detail needed for deeper analysis.</p>
+    <div class="grid" style="margin-top:30px">
+      <div class="card metric"><strong>10</strong><span>line-of-business report pages</span></div>
+      <div class="card metric"><strong>30 min</strong><span>interval-level ASA analysis</span></div>
+      <div class="card metric"><strong>4</strong><span>headline operational KPIs</span></div>
+      <div class="card metric"><strong>1 view</strong><span>performance, staffing, and client detail</span></div>
+    </div>
+    <figure><img src="lob-analysis-dashboard.png" alt="Power BI LOB Analysis Dashboard showing ASA KPIs, weekday heatmap, staffing averages, and client-level ASA table"><figcaption>The Core line-of-business page combines KPI cards, an ASA heatmap, staffing averages, and performance-guarantee detail.</figcaption></figure>
+  </div></section>
+
+  <section class="soft" id="solution"><div class="wrap"><span class="section-kicker">Dashboard solution</span><h2 class="section-title">A layered view of operational performance</h2><div class="grid">
+    <article class="card three"><h3>Executive KPI cards</h3><p>Highlights average ASA, the best-performing day, the worst-performing day, and the peak interval so users can recognize the reporting period’s main story immediately.</p></article>
+    <article class="card three"><h3>ASA heatmap</h3><p>Uses conditional formatting to compare weekday and interval performance. Higher ASA values stand out visually, making service-pressure periods easier to isolate.</p></article>
+    <article class="card three"><h3>Staffing mix</h3><p>Summarizes average openers, early/mid staff, mid staff, and closers to place performance results beside the staffing pattern supporting the operation.</p></article>
+    <article class="card three"><h3>Client-level drilldown</h3><p>Breaks out performance-guarantee ASA by client group, helping users move from an aggregate result to the accounts influencing overall performance.</p></article>
+  </div></div></section>
+
+  <section><div class="wrap"><span class="section-kicker">Accomplishments</span><h2 class="section-title">What the project delivered</h2><div class="grid">
+    <div class="card two"><ul class="list"><li>Created a repeatable report structure across Core, Designated, Life, GRP, DCS, UPS, THD, Clinical, Warner, and Hartleave lines of business.</li><li>Built weighted ASA calculations so aggregate results reflect answered-call volume rather than averaging pre-aggregated interval averages.</li><li>Developed best-day, worst-day, and peak-interval measures that respond to report filters and preserve the selected reporting context.</li></ul></div>
+    <div class="card two"><ul class="list"><li>Standardized interval labels and weekday ordering for consistent analysis across report tabs.</li><li>Combined workforce staffing data with operational call results to support performance and coverage conversations in one place.</li><li>Added client-level detail and expandable hierarchies for faster root-cause investigation without leaving the dashboard.</li></ul></div>
+  </div></div></section>
+
+  <section class="soft"><div class="wrap"><span class="section-kicker">Build process</span><h2 class="section-title">How the dashboard was created</h2><div class="grid flow">
+    <article class="card step"><h3>Define needs</h3><p>Translated WFM reporting questions into specific KPIs, drill paths, staffing categories, and line-of-business views.</p></article>
+    <article class="card step"><h3>Prepare data</h3><p>Connected operational and workforce sources, standardized fields, validated intervals, and established reliable model relationships.</p></article>
+    <article class="card step"><h3>Build measures</h3><p>Created DAX for weighted ASA, daily performance, peak intervals, best and worst days, and staffing averages.</p></article>
+    <article class="card step"><h3>Validate and refine</h3><p>Compared KPI outputs with heatmap values, tested filter behavior, corrected aggregation logic, and improved the visual hierarchy.</p></article>
+  </div></div></section>
+
+  <section id="tools"><div class="wrap"><span class="section-kicker">Tools and resources</span><h2 class="section-title">Technology used</h2><p class="lead">The project combines business-intelligence development, workforce data knowledge, and iterative validation.</p><div class="tech"><span>Microsoft Power BI Desktop</span><span>DAX</span><span>Power Query</span><span>Snowflake SQL</span><span>Microsoft Excel</span><span>Data Modeling</span><span>Conditional Formatting</span><span>WFM KPI Definitions</span></div>
+    <div class="grid" style="margin-top:30px"><article class="card two"><h3>Data resources</h3><ul class="list"><li>Call-level and interval-level operational data</li><li>Forecast and intraday workforce data</li><li>Employee schedule and role-detail data</li><li>Client and performance-guarantee reference tables</li><li>Skill and routing reference data</li></ul></article><article class="card two"><h3>Analytical methods</h3><ul class="list"><li>Weighted-average KPI design</li><li>Filter-context-aware DAX</li><li>Time and weekday normalization</li><li>Cross-source data validation</li><li>Exception-based visual design</li></ul></article></div>
+  </div></section>
+
+  <section class="soft"><div class="wrap"><div class="callout"><p><strong>Result:</strong> A scalable workforce analytics experience that helps analysts and leaders identify when performance changed, where the issue occurred, and which staffing or client segments require additional investigation.</p></div></div></section>
+</main>
+<footer><div class="wrap footer-row"><div><strong>Hanni Zaher</strong><br>Workforce Planning • Operations Analytics • Automation</div><div><a href="index.html#projects">Return to projects</a> &nbsp;•&nbsp; <a href="mailto:zaherhanni@gmail.com">Contact</a></div></div></footer>
+</body>
+</html>
