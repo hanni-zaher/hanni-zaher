@@ -1,12 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LOB Analysis Dashboard case study by Hanni Zaher, featuring Power BI, DAX, Power Query, KPI analysis, ASA heatmaps, staffing views, and operational reporting.">
-  <title>LOB Analysis Dashboard | Hanni Zaher</title>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Workforce analytics case study by Hanni Zaher: Snowflake data integration, centralized Power BI reporting, DAX measures, interval-level service analysis, and an 83% reduction in reporting time." name="description"/>
+  <title>
+   Line of Business Analytics Case Study | Hanni Zaher
+  </title>
   <style>
-    :root{--navy:#0d1b2a;--blue:#1f4e79;--cyan:#43b5d9;--ink:#17202a;--muted:#5c6773;--paper:#fff;--soft:#f4f7fa;--line:#dce4eb;--accent:#7c0046;--shadow:0 18px 50px rgba(13,27,42,.12)}
+   :root{--navy:#0d1b2a;--blue:#1f4e79;--cyan:#43b5d9;--ink:#17202a;--muted:#5c6773;--paper:#fff;--soft:#f4f7fa;--line:#dce4eb;--accent:#7c0046;--shadow:0 18px 50px rgba(13,27,42,.12)}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Aptos,Calibri,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
     a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
     .skip{position:absolute;left:-999px;top:0}.skip:focus{left:16px;top:16px;background:#fff;padding:10px;z-index:99}
@@ -22,49 +24,413 @@
     footer{padding:38px 0;background:var(--navy);color:#d6e2eb}.footer-row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer-row a{color:#fff}
     @media(max-width:800px){.navlinks a:not(:last-child){display:none}.metric,.step,.three,.two{grid-column:span 12}.hero{padding:70px 0 58px}section{padding:58px 0}.wrap{width:min(100% - 28px,1120px)}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+   .privacy-note{margin:0;padding:18px 20px;text-align:center;background:#f4f7fa;color:#5c6773;font-size:.86rem;border-top:1px solid #dce4eb}
   </style>
-</head>
-<body>
-<a class="skip" href="#main">Skip to main content</a>
-<header><div class="wrap"><nav aria-label="Primary navigation"><a class="brand" href="index.html">HANNI ZAHER</a><div class="navlinks"><a href="#overview">Overview</a><a href="#solution">Solution</a><a href="#tools">Tools</a><a href="index.html#projects">All Projects</a></div></nav></div></header>
-<main id="main">
-  <section class="hero"><div class="wrap"><span class="eyebrow">Power BI case study • Workforce analytics</span><h1>Line of Business Analysis Dashboard</h1><p>A multi-page operational reporting solution that turns interval-level contact center data into clear performance, staffing, and client-level insights for Workforce Management decision-making.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Snowflake SQL</span><span class="chip">Workforce Management</span></div></div></section>
-
-  <section id="overview"><div class="wrap"><span class="section-kicker">Project overview</span><h2 class="section-title">From fragmented performance data to one decision-ready view</h2><p class="lead">The LOB Analysis Dashboard was created to make line-of-business performance easier to evaluate across days, 30-minute intervals, staffing roles, performance guarantees, and client groups. The design prioritizes fast exception identification while preserving the detail needed for deeper analysis.</p>
-    <div class="grid" style="margin-top:30px">
-      <div class="card metric"><strong>10</strong><span>line-of-business report pages</span></div>
-      <div class="card metric"><strong>30 min</strong><span>interval-level ASA analysis</span></div>
-      <div class="card metric"><strong>4</strong><span>headline operational KPIs</span></div>
-      <div class="card metric"><strong>1 view</strong><span>performance, staffing, and client detail</span></div>
+ </head>
+ <body>
+  <a class="skip" href="#main">
+   Skip to main content
+  </a>
+  <header>
+   <div class="wrap">
+    <nav aria-label="Primary navigation">
+     <a class="brand" href="index.html">
+      HANNI ZAHER
+     </a>
+     <div class="navlinks">
+      <a href="#overview">
+       Overview
+      </a>
+      <a href="#solution">
+       Solution
+      </a>
+      <a href="#tools">
+       Tools
+      </a>
+      <a href="index.html#projects">
+       All Projects
+      </a>
+     </div>
+    </nav>
+   </div>
+  </header>
+  <main id="main">
+   <section class="hero">
+    <div class="wrap">
+     <span class="eyebrow">
+      Power BI case study &bull; Workforce analytics
+     </span>
+     <h1>
+      From fragmented reports to one workforce analytics solution
+     </h1>
+     <p>
+      Connected operational data from Snowflake to Power BI and consolidated three separate reports into a single, multi-page workforce analytics experience&mdash;giving analysts and operations leaders one consistent place to evaluate service performance, staffing, and line-of-business trends.
+     </p>
+     <div class="chips">
+      <span class="chip">
+       Power BI
+      </span>
+      <span class="chip">
+       DAX
+      </span>
+      <span class="chip">
+       Power Query
+      </span>
+      <span class="chip">
+       Snowflake SQL
+      </span>
+      <span class="chip">
+       Workforce Management
+      </span>
+     </div>
     </div>
-    <figure><img src="lob-analysis-dashboard.png" alt="Power BI LOB Analysis Dashboard showing ASA KPIs, weekday heatmap, staffing averages, and client-level ASA table"><figcaption>The Core line-of-business page combines KPI cards, an ASA heatmap, staffing averages, and performance-guarantee detail.</figcaption></figure>
-  </div></section>
-
-  <section class="soft" id="solution"><div class="wrap"><span class="section-kicker">Dashboard solution</span><h2 class="section-title">A layered view of operational performance</h2><div class="grid">
-    <article class="card three"><h3>Executive KPI cards</h3><p>Highlights average ASA, the best-performing day, the worst-performing day, and the peak interval so users can recognize the reporting period’s main story immediately.</p></article>
-    <article class="card three"><h3>ASA heatmap</h3><p>Uses conditional formatting to compare weekday and interval performance. Higher ASA values stand out visually, making service-pressure periods easier to isolate.</p></article>
-    <article class="card three"><h3>Staffing mix</h3><p>Summarizes average openers, early/mid staff, mid staff, and closers to place performance results beside the staffing pattern supporting the operation.</p></article>
-    <article class="card three"><h3>Client-level drilldown</h3><p>Breaks out performance-guarantee ASA by client group, helping users move from an aggregate result to the accounts influencing overall performance.</p></article>
-  </div></div></section>
-
-  <section><div class="wrap"><span class="section-kicker">Accomplishments</span><h2 class="section-title">What the project delivered</h2><div class="grid">
-    <div class="card two"><ul class="list"><li>Created a repeatable report structure across Core, Designated, Life, GRP, DCS, UPS, THD, Clinical, Warner, and Hartleave lines of business.</li><li>Built weighted ASA calculations so aggregate results reflect answered-call volume rather than averaging pre-aggregated interval averages.</li><li>Developed best-day, worst-day, and peak-interval measures that respond to report filters and preserve the selected reporting context.</li></ul></div>
-    <div class="card two"><ul class="list"><li>Standardized interval labels and weekday ordering for consistent analysis across report tabs.</li><li>Combined workforce staffing data with operational call results to support performance and coverage conversations in one place.</li><li>Added client-level detail and expandable hierarchies for faster root-cause investigation without leaving the dashboard.</li></ul></div>
-  </div></div></section>
-
-  <section class="soft"><div class="wrap"><span class="section-kicker">Build process</span><h2 class="section-title">How the dashboard was created</h2><div class="grid flow">
-    <article class="card step"><h3>Define needs</h3><p>Translated WFM reporting questions into specific KPIs, drill paths, staffing categories, and line-of-business views.</p></article>
-    <article class="card step"><h3>Prepare data</h3><p>Connected operational and workforce sources, standardized fields, validated intervals, and established reliable model relationships.</p></article>
-    <article class="card step"><h3>Build measures</h3><p>Created DAX for weighted ASA, daily performance, peak intervals, best and worst days, and staffing averages.</p></article>
-    <article class="card step"><h3>Validate and refine</h3><p>Compared KPI outputs with heatmap values, tested filter behavior, corrected aggregation logic, and improved the visual hierarchy.</p></article>
-  </div></div></section>
-
-  <section id="tools"><div class="wrap"><span class="section-kicker">Tools and resources</span><h2 class="section-title">Technology used</h2><p class="lead">The project combines business-intelligence development, workforce data knowledge, and iterative validation.</p><div class="tech"><span>Microsoft Power BI Desktop</span><span>DAX</span><span>Power Query</span><span>Snowflake SQL</span><span>Microsoft Excel</span><span>Data Modeling</span><span>Conditional Formatting</span><span>WFM KPI Definitions</span></div>
-    <div class="grid" style="margin-top:30px"><article class="card two"><h3>Data resources</h3><ul class="list"><li>Call-level and interval-level operational data</li><li>Forecast and intraday workforce data</li><li>Employee schedule and role-detail data</li><li>Client and performance-guarantee reference tables</li><li>Skill and routing reference data</li></ul></article><article class="card two"><h3>Analytical methods</h3><ul class="list"><li>Weighted-average KPI design</li><li>Filter-context-aware DAX</li><li>Time and weekday normalization</li><li>Cross-source data validation</li><li>Exception-based visual design</li></ul></article></div>
-  </div></section>
-
-  <section class="soft"><div class="wrap"><div class="callout"><p><strong>Result:</strong> A scalable workforce analytics experience that helps analysts and leaders identify when performance changed, where the issue occurred, and which staffing or client segments require additional investigation.</p></div></div></section>
-</main>
-<footer><div class="wrap footer-row"><div><strong>Hanni Zaher</strong><br>Workforce Planning • Operations Analytics • Automation</div><div><a href="index.html#projects">Return to projects</a> &nbsp;•&nbsp; <a href="mailto:zaherhanni@gmail.com">Contact</a></div></div></footer>
-</body>
+   </section>
+   <section id="overview">
+    <div class="wrap">
+     <span class="section-kicker">
+      Project overview
+     </span>
+     <h2 class="section-title">
+      The challenge: fragmented reporting and time-consuming analysis
+     </h2>
+     <p class="lead">
+      Operational and workforce information was spread across three separate reports, making it harder to compare performance consistently and requiring analysts to spend time gathering information before they could investigate it. I brought the reporting into one Power BI solution, using Snowflake as the connected data source and a standardized model to support consistent analysis across lines of business.
+     </p>
+     <div class="grid" style="margin-top:30px">
+      <div class="card metric">
+       <strong>
+        3 &rarr; 1
+       </strong>
+       <span>
+        separate reports consolidated into one solution
+       </span>
+      </div>
+      <div class="card metric">
+       <strong>
+        3 hrs &rarr; 30 min
+       </strong>
+       <span>
+        reporting time per reporting cycle
+       </span>
+      </div>
+      <div class="card metric">
+       <strong>
+        83%
+       </strong>
+       <span>
+        reduction in reporting time
+       </span>
+      </div>
+      <div class="card metric">
+       <strong>
+        10
+       </strong>
+       <span>
+        lines of business supported
+       </span>
+      </div>
+     </div>
+     <figure>
+      <img alt="An anonymized Power BI workforce dashboard showing service-level KPIs, an interval heatmap, and staffing summaries" src="lob-analysis-dashboard.png"/>
+      <figcaption>
+       An anonymized view of the centralized dashboard, bringing headline service metrics, interval patterns, and staffing context together. All identifying or confidential business information should be removed from public screenshots.
+      </figcaption>
+     </figure>
+    </div>
+   </section>
+   <section class="soft" id="solution">
+    <div class="wrap">
+     <span class="section-kicker">
+      Dashboard solution
+     </span>
+     <h2 class="section-title">
+      A layered view of operational performance
+     </h2>
+     <div class="grid">
+      <article class="card three">
+       <h3>
+        Executive KPI cards
+       </h3>
+       <p>
+        Surfaces average ASA, best- and worst-performing days, and peak intervals so users can quickly understand the reporting period and spot exceptions.
+       </p>
+      </article>
+      <article class="card three">
+       <h3>
+        ASA heatmap
+       </h3>
+       <p>
+        Compares weekday and 30-minute interval performance with conditional formatting, making recurring service-pressure periods easier to identify.
+       </p>
+      </article>
+      <article class="card three">
+       <h3>
+        Staffing context
+       </h3>
+       <p>
+        Places average staffing by role and shift segment alongside service outcomes, helping analysts investigate whether coverage patterns align with performance.
+       </p>
+      </article>
+      <article class="card three">
+       <h3>
+        Line-of-business drilldown
+       </h3>
+       <p>
+        Lets users move from an overall view into line-of-business performance and relevant operational detail without switching between separate reports.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section>
+    <div class="wrap">
+     <span class="section-kicker">
+      Accomplishments
+     </span>
+     <h2 class="section-title">
+      What the project delivered
+     </h2>
+     <div class="grid">
+      <div class="card two">
+       <ul class="list">
+        <li>
+         Consolidated three recurring reports into one centralized Power BI reporting experience.
+        </li>
+        <li>
+         Reduced reporting time from approximately 3 hours to 30 minutes per cycle&mdash;an 83% reduction.
+        </li>
+        <li>
+         Created a repeatable structure spanning 10 lines of business, making performance comparisons more consistent.
+        </li>
+       </ul>
+      </div>
+      <div class="card two">
+       <ul class="list">
+        <li>
+         Connected Power BI to operational and workforce data in Snowflake, reducing reliance on manually assembling information from separate reports.
+        </li>
+        <li>
+         Built weighted ASA calculations so aggregate results reflect answered-call volume rather than averaging pre-aggregated interval averages.
+        </li>
+        <li>
+         Developed filter-responsive measures for best day, worst day, peak interval, and staffing averages to support faster investigation.
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="soft">
+    <div class="wrap">
+     <span class="section-kicker">
+      Build process
+     </span>
+     <h2 class="section-title">
+      How the dashboard was created
+     </h2>
+     <div class="grid flow">
+      <article class="card step">
+       <h3>
+        Map the reporting needs
+       </h3>
+       <p>
+        Reviewed the three existing reports and identified the operational questions, KPIs, interval views, staffing dimensions, and drill paths needed in one solution.
+       </p>
+      </article>
+      <article class="card step">
+       <h3>
+        Connect and prepare Snowflake data
+       </h3>
+       <p>
+        Connected Power BI to the relevant Snowflake operational and workforce datasets. Used SQL and Power Query to select, shape, standardize, and validate the fields needed for reporting.
+       </p>
+      </article>
+      <article class="card step">
+       <h3>
+        Centralize and model the reports
+       </h3>
+       <p>
+        Brought the three reporting views into one Power BI experience, organized the data model, and created reusable DAX measures for weighted ASA, daily performance, peak intervals, and staffing summaries.
+       </p>
+      </article>
+      <article class="card step">
+       <h3>
+        Validate and optimize
+       </h3>
+       <p>
+        Reconciled dashboard results against source/report outputs, tested filters and interval logic, refined visual hierarchy, and confirmed the consolidated views supported the required analysis.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="soft">
+    <div class="wrap">
+     <span class="section-kicker">
+      Data integration &amp; reporting workflow
+     </span>
+     <h2 class="section-title">
+      One connected path from source data to operational insight
+     </h2>
+     <p class="lead">
+      The solution replaces a fragmented reporting process with a repeatable flow: connect to Snowflake, prepare and validate the data, apply consistent KPI logic, and present the results in a single Power BI experience.
+     </p>
+     <div class="grid">
+      <article class="card three">
+       <h3>
+        1. Snowflake source
+       </h3>
+       <p>
+        Operational call and workforce datasets are accessed from Snowflake, providing a shared source for the reporting model.
+       </p>
+      </article>
+      <article class="card three">
+       <h3>
+        2. Data preparation
+       </h3>
+       <p>
+        SQL and Power Query shape the required fields, normalize dates and 30-minute intervals, and prepare data for analysis.
+       </p>
+      </article>
+      <article class="card three">
+       <h3>
+        3. KPI &amp; model layer
+       </h3>
+       <p>
+        Relationships and DAX measures standardize weighted ASA, daily and interval performance, and staffing calculations.
+       </p>
+      </article>
+      <article class="card three">
+       <h3>
+        4. Centralized reporting
+       </h3>
+       <p>
+        One Power BI solution presents the combined reporting views, with filters and drilldowns for consistent analysis.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section id="tools">
+    <div class="wrap">
+     <span class="section-kicker">
+      Tools and resources
+     </span>
+     <h2 class="section-title">
+      Technology used
+     </h2>
+     <p class="lead">
+      The project combines business-intelligence development, workforce data knowledge, and iterative validation.
+     </p>
+     <div class="tech">
+      <span>
+       Microsoft Power BI Desktop
+      </span>
+      <span>
+       DAX
+      </span>
+      <span>
+       Power Query
+      </span>
+      <span>
+       Snowflake SQL
+      </span>
+      <span>
+       Microsoft Excel
+      </span>
+      <span>
+       Data Modeling
+      </span>
+      <span>
+       Conditional Formatting
+      </span>
+      <span>
+       WFM KPI Definitions
+      </span>
+     </div>
+     <div class="grid" style="margin-top:30px">
+      <article class="card two">
+       <h3>
+        Data resources
+       </h3>
+       <ul class="list">
+        <li>
+         Call-level and interval-level operational data
+        </li>
+        <li>
+         Forecast and intraday workforce data
+        </li>
+        <li>
+         Employee schedule and role-detail data
+        </li>
+        <li>
+         Line-of-business and performance reference data
+        </li>
+        <li>
+         Skill and routing reference data
+        </li>
+       </ul>
+      </article>
+      <article class="card two">
+       <h3>
+        Analytical methods
+       </h3>
+       <ul class="list">
+        <li>
+         Weighted-average KPI design
+        </li>
+        <li>
+         Filter-context-aware DAX
+        </li>
+        <li>
+         Time and weekday normalization
+        </li>
+        <li>
+         Cross-source data validation
+        </li>
+        <li>
+         Exception-based visual design
+        </li>
+       </ul>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="soft">
+    <div class="wrap">
+     <div class="callout">
+      <p>
+       <strong>
+        Business outcome:
+       </strong>
+       Three recurring reports became one centralized Power BI solution, cutting reporting time from approximately 3 hours to 30 minutes (an 83% reduction) while standardizing workforce and service-level analysis across 10 lines of business.
+      </p>
+     </div>
+    </div>
+   </section>
+  </main>
+  <p class="privacy-note">
+   Portfolio note: screenshots and examples are anonymized. Client names, employee identifiers, account details, internal targets, and proprietary volumes are excluded.
+  </p>
+  <footer>
+   <div class="wrap footer-row">
+    <div>
+     <strong>
+      Hanni Zaher
+     </strong>
+     <br/>
+     Workforce Planning &bull; Operations Analytics &bull; Automation
+    </div>
+    <div>
+     <a href="index.html#projects">
+      Return to projects
+     </a>
+     &nbsp;&bull;&nbsp;
+     <a href="mailto:zaherhanni@gmail.com">
+      Contact
+     </a>
+    </div>
+   </div>
+  </footer>
+ </body>
 </html>
